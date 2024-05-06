@@ -85,6 +85,11 @@
           >${{ product.price }}</span
         >
         <a
+          @click="$emit('edit-product', product.id)"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >Edit</a
+        >
+        <a
           @click="$emit('delete-product', product.id)"
           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >Delete</a
@@ -98,7 +103,6 @@
 export default {
   name: "ProductCompoent",
   props: ["product"],
-  inject: ["product"],
   methods: {
 
   },

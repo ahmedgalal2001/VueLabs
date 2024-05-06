@@ -22,6 +22,22 @@ def get_product(id):
     return jsonify({'message': 'Product not found'})
 
 
+@app.route('/api/products/<int:id>', methods=['PUT'])
+def update_product(id):
+    try:
+        data = request.get_json()["data"]
+        for item in items:
+            if item['id'] == id:
+                item['name'] = data['name']
+                item['description'] = data['description']
+                item['price'] = data['price']
+                item['image'] = data['image']
+                return jsonify(item)
+        return jsonify({'message': 'Product not found'})
+    except Exception as e:
+        print(e)
+        return jsonify({"error": "An error occurred"}), 500 
+
 @app.route('/api/products', methods=['POST'])
 def create_product():
     try:
